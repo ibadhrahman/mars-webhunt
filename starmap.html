@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signal From Mars · Star Map (Sector 4)</title>
+  <link rel="stylesheet" href="terminal.css">
+</head>
+<body data-page="4">
+  <div class="terminal-wrapper">
+    <!-- Top System Status Bar -->
+    <div class="sys-bar">
+      <div class="status-pill">
+        <span class="blink-dot"></span>
+        <span>ARES-4 STATION TELEMETRY // SECTOR 4 CELESTIAL OBSERVATORY</span>
+      </div>
+      <div>
+        <button id="audio-toggle" class="audio-toggle-btn">AUDIO: [ONLINE]</button>
+      </div>
+    </div>
+
+    <header>
+      <div class="terminal-badge">FINAL SECTOR GATEWAY · SECTOR 4</div>
+      <h1>Deep-Space Star Map &amp; Navigation Array</h1>
+      <p class="subtitle">Astrometric Telescope Alignment · Sol-Earth Relay Transmitter</p>
+    </header>
+
+    <main>
+      <!-- Gate Lock (Requires Password from Page 3: MARS) -->
+      <form id="gate" class="terminal-card alert-card">
+        <h2 class="card-title" style="color: var(--alert-red);">🔒 Stellar Array Locked</h2>
+        <p>This terminal requires the Sector 3 Command Clearance Word obtained from the Crew Roster.</p>
+        <div class="input-row">
+          <label>
+            Sector 3 Clearance:
+            <input name="w" autocomplete="off" placeholder="ENTER SECTOR 3 CODE..." required>
+          </label>
+          <button class="term-btn">[UNLOCK OBSERVATORY ARRAY]</button>
+        </div>
+        <p class="msg"></p>
+      </form>
+
+      <!-- Content (Revealed after Gate Unlock) -->
+      <div id="content" hidden>
+        <!-- Story Card -->
+        <section class="terminal-card">
+          <h2 class="card-title">✨ Astrometric Calibration Protocol</h2>
+          <p>The high-gain orbital parabolic dish is motorized and locked to astronomical calibration targets in the Martian night sky.</p>
+          <blockquote class="log-entry">
+            "Flight Telemetry Log 04-B: Align the optical array by selecting the navigational guide stars in exact chronological route order:
+            <br><br>
+            <strong>[1] VEGA</strong> ➔ <strong>[2] DENEB</strong> ➔ <strong>[3] ALTAIR</strong> ➔ <strong>[4] POLARIS</strong>"
+          </blockquote>
+          <p style="color: var(--text-dim); margin-bottom: 0;">
+            Click the stars on the interactive astrometric dome in that sequence to lock dish alignment.
+          </p>
+        </section>
+
+        <!-- Interactive Clickable Constellation Map -->
+        <section class="terminal-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <h2 class="card-title" style="margin-bottom: 0;">🌌 Interactive Astrometric Dome</h2>
+            <button id="reset-starmap-btn" class="term-btn" style="padding: 0.2rem 0.6rem; font-size: 0.8rem;">[RESET ARRAY]</button>
+          </div>
+
+          <div id="starmap-stage" class="starmap-stage">
+            <svg class="starmap-svg" viewBox="0 0 800 380">
+              <!-- Radial Coordinate Rings -->
+              <circle cx="400" cy="190" r="160" fill="none" stroke="rgba(0,255,102,0.08)" stroke-width="1" stroke-dasharray="4,6" />
+              <circle cx="400" cy="190" r="100" fill="none" stroke="rgba(0,255,102,0.06)" stroke-width="1" />
+              <circle cx="400" cy="190" r="40" fill="none" stroke="rgba(0,255,102,0.06)" stroke-width="1" />
+              <!-- Crosshairs -->
+              <line x1="400" y1="10" x2="400" y2="370" stroke="rgba(0,255,102,0.12)" stroke-width="1" stroke-dasharray="2,4" />
+              <line x1="20" y1="190" x2="780" y2="190" stroke="rgba(0,255,102,0.12)" stroke-width="1" stroke-dasharray="2,4" />
+
+              <!-- Constellation Lines Drawn Dynamically -->
+              <g id="constellation-lines"></g>
+
+              <!-- Star Nodes -->
+              <!-- 1: VEGA (Target 1) -->
+              <g class="star-node" data-star="VEGA" transform="translate(220, 70)">
+                <circle cx="0" cy="0" r="7" />
+                <text x="14" y="5" class="star-label">★ VEGA</text>
+              </g>
+
+              <!-- 2: DENEB (Target 2) -->
+              <g class="star-node" data-star="DENEB" transform="translate(540, 90)">
+                <circle cx="0" cy="0" r="7" />
+                <text x="14" y="5" class="star-label">★ DENEB</text>
+              </g>
+
+              <!-- 3: ALTAIR (Target 3) -->
+              <g class="star-node" data-star="ALTAIR" transform="translate(380, 260)">
+                <circle cx="0" cy="0" r="7" />
+                <text x="14" y="5" class="star-label">★ ALTAIR</text>
+              </g>
+
+              <!-- 4: POLARIS (Target 4) -->
+              <g class="star-node" data-star="POLARIS" transform="translate(710, 160)">
+                <circle cx="0" cy="0" r="7" />
+                <text x="14" y="5" class="star-label">★ POLARIS</text>
+              </g>
+
+              <!-- Distractor Stars -->
+              <g class="star-node" data-star="SIRIUS" transform="translate(120, 280)">
+                <circle cx="0" cy="0" r="6" />
+                <text x="12" y="5" class="star-label">★ SIRIUS</text>
+              </g>
+
+              <g class="star-node" data-star="BETELGEUSE" transform="translate(290, 180)">
+                <circle cx="0" cy="0" r="6" />
+                <text x="12" y="5" class="star-label">★ BETELGEUSE</text>
+              </g>
+
+              <g class="star-node" data-star="ARCTURUS" transform="translate(620, 310)">
+                <circle cx="0" cy="0" r="6" />
+                <text x="12" y="5" class="star-label">★ ARCTURUS</text>
+              </g>
+            </svg>
+          </div>
+
+          <p id="starmap-status" style="margin: 0.8rem 0 0; font-size: 0.95rem; color: var(--text-dim); min-height: 2.2em;">
+            [ARRAY READY]: Select 1st star according to flight navigation log.
+          </p>
+        </section>
+
+        <!-- Frequency Signature Panel (revealed after star alignment complete) -->
+        <section id="freq-panel" class="terminal-card" hidden>
+          <h2 class="card-title">📡 Celestial Frequency Signature · Decoded</h2>
+          <p>Dish alignment complete. The astrometric array has captured a positional frequency burst from the Ares-4 relay satellite:</p>
+          <blockquote class="log-entry">
+            "Relay telemetry authenticated. Stellar signature encoded in standard positional notation. Sequence locked in memory buffer:"
+          </blockquote>
+
+          <div class="morse-display" style="margin: 1rem 0;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;">
+              <div style="background: #010c05; border: 1px solid var(--panel-border); padding: 0.5rem 0.8rem; border-radius: 3px; text-align: center; min-width: 55px;">
+                <div style="font-size: 0.65rem; color: var(--text-dim);">POS 1</div>
+                <div style="font-size: 1.5rem; color: var(--text-bright); font-weight: bold;">19</div>
+              </div>
+              <div style="background: #010c05; border: 1px solid var(--panel-border); padding: 0.5rem 0.8rem; border-radius: 3px; text-align: center; min-width: 55px;">
+                <div style="font-size: 0.65rem; color: var(--text-dim);">POS 2</div>
+                <div style="font-size: 1.5rem; color: var(--text-bright); font-weight: bold;">15</div>
+              </div>
+              <div style="background: #010c05; border: 1px solid var(--panel-border); padding: 0.5rem 0.8rem; border-radius: 3px; text-align: center; min-width: 55px;">
+                <div style="font-size: 0.65rem; color: var(--text-dim);">POS 3</div>
+                <div style="font-size: 1.5rem; color: var(--text-bright); font-weight: bold;">02</div>
+              </div>
+              <div style="background: #010c05; border: 1px solid var(--panel-border); padding: 0.5rem 0.8rem; border-radius: 3px; text-align: center; min-width: 55px;">
+                <div style="font-size: 0.65rem; color: var(--text-dim);">POS 4</div>
+                <div style="font-size: 1.5rem; color: var(--text-bright); font-weight: bold;">15</div>
+              </div>
+              <div style="background: #010c05; border: 1px solid var(--panel-border); padding: 0.5rem 0.8rem; border-radius: 3px; text-align: center; min-width: 55px;">
+                <div style="font-size: 0.65rem; color: var(--text-dim);">POS 5</div>
+                <div style="font-size: 1.5rem; color: var(--text-bright); font-weight: bold;">08</div>
+              </div>
+              <div style="background: #010c05; border: 1px solid var(--panel-border); padding: 0.5rem 0.8rem; border-radius: 3px; text-align: center; min-width: 55px;">
+                <div style="font-size: 0.65rem; color: var(--text-dim);">POS 6</div>
+                <div style="font-size: 1.5rem; color: var(--text-bright); font-weight: bold;">16</div>
+              </div>
+            </div>
+          </div>
+
+          <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 0;">
+            Astrometric relay log: <em>"Buffer sequence stored in reverse orbital lock order."</em>
+          </p>
+        </section>
+
+        <!-- Answer Form -->
+        <form id="answer" class="terminal-card">
+          <label>
+            Decoded Observatory Subsystem Key:
+            <input name="w" autocomplete="off" placeholder="CODEWORD..." required>
+          </label>
+          <div class="input-row">
+            <button class="term-btn">[LOCK TRANSMITTER ALIGNMENT]</button>
+          </div>
+          <p class="msg"></p>
+        </form>
+
+        <!-- Final Victory Screen & Password for Next Set -->
+        <div id="next" class="victory-card" hidden>
+          <h2 style="margin: 0; color: #ffffff; text-shadow: 0 0 15px var(--glow-color); font-size: 1.85rem;">
+            🏆 ALL 4 SECTORS RECOVERED!
+          </h2>
+          <p style="color: var(--text-bright); margin: 0.5rem 0 1rem; font-size: 1.1rem;">
+            Ares-4 Subsystems Online: Comms (<code>BEACON</code>) · Life Support (<code>7492</code>) · Habitat (<code>MARS</code>) · Observatory (<code>PHOBOS</code>)
+          </p>
+
+          <div style="border-top: 1px dashed var(--panel-border-dim); border-bottom: 1px dashed var(--panel-border-dim); padding: 1.2rem 0; margin: 1.2rem 0;">
+            <p style="text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-dim); margin: 0 0 0.5rem;">
+              ================ OFFICIAL PASSCODE FOR NEXT SET (SET 3) ================
+            </p>
+            <div class="master-passcode-box">
+              BEACON-7492-MARS-PHOBOS
+            </div>
+            <div>
+              <button id="copy-passcode-btn" class="term-btn copy-btn">[ 📋 COPY SET 3 PASSCODE ]</button>
+            </div>
+          </div>
+
+          <p style="color: var(--text-dim); font-size: 0.95rem;">
+            Transmission dish aligned. An emergency audio dispatch is ready for playback in the Relay Console:
+          </p>
+          <a href="transmission.html" style="display: inline-block; margin-top: 0.5rem; color: var(--text-bright); text-decoration: none; border: 1px solid var(--panel-border); padding: 0.6rem 1.4rem; background: rgba(0,255,102,0.15); font-weight: bold; box-shadow: 0 0 15px var(--glow-dim);">
+            ACCESS FINAL TRANSMISSION RELAY CONSOLE →
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="terminal.js"></script>
+</body>
+</html>

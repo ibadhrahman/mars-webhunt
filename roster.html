@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signal From Mars · Crew Roster (Sector 3)</title>
+  <link rel="stylesheet" href="terminal.css">
+</head>
+<body data-page="3">
+  <div class="terminal-wrapper">
+    <!-- Top System Status Bar -->
+    <div class="sys-bar">
+      <div class="status-pill">
+        <span class="blink-dot"></span>
+        <span>ARES-4 STATION TELEMETRY // SECTOR 3 HABITAT DIRECTORY</span>
+      </div>
+      <div>
+        <button id="audio-toggle" class="audio-toggle-btn">AUDIO: [ONLINE]</button>
+      </div>
+    </div>
+
+    <header>
+      <div class="terminal-badge">SECURITY GATEWAY · SECTOR 3</div>
+      <h1>Colony Personnel &amp; Crew Roster</h1>
+      <p class="subtitle">Expedition Command · Emergency Authentication Directory</p>
+    </header>
+
+    <main>
+      <!-- Gate Lock (Requires Password from Page 2: 7492) -->
+      <form id="gate" class="terminal-card alert-card">
+        <h2 class="card-title" style="color: var(--alert-red);">🔒 Habitat Terminal Locked</h2>
+        <p>This terminal requires the Sector 2 Override PIN obtained from the Oxygen Dashboard.</p>
+        <div class="input-row">
+          <label>
+            Sector 2 PIN:
+            <input name="w" autocomplete="off" placeholder="ENTER 4-DIGIT PIN..." required>
+          </label>
+          <button class="term-btn">[AUTHENTICATE SECTOR 2]</button>
+        </div>
+        <p class="msg"></p>
+      </form>
+
+      <!-- Content (Revealed after Gate Unlock) -->
+      <div id="content" hidden>
+        <!-- Story Card -->
+        <section class="terminal-card">
+          <h2 class="card-title">👨‍🚀 Habitat Command Console</h2>
+          <p>The habitat terminal is locked. Pinned beside the screen is a faded note:</p>
+          <blockquote class="log-entry">
+            "Respect the chain of command."
+          </blockquote>
+        </section>
+
+        <section class="terminal-card">
+          <h2 class="card-title">📋 Active Personnel Log · Ares-4 Outpost</h2>
+          
+          <table class="term-table">
+            <thead>
+              <tr>
+                <th>Roster ID</th>
+                <th>Officer Name</th>
+                <th>Designation</th>
+                <th>Station Post</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color: var(--text-dim);">#AR-303</td>
+                <td>Rex Thorne</td>
+                <td>Chief Engineer</td>
+                <td>Geothermal Reactor Array</td>
+              </tr>
+              <tr>
+                <td style="color: var(--text-dim);">#AR-202</td>
+                <td>Alena Rostova</td>
+                <td>Lieutenant Commander</td>
+                <td>Sub-Space Communications</td>
+              </tr>
+              <tr>
+                <td style="color: var(--text-dim);">#AR-101</td>
+                <td>Marcus Vance</td>
+                <td>Commander</td>
+                <td>Outpost Mission Lead</td>
+              </tr>
+              <tr>
+                <td style="color: var(--text-dim);">#AR-404</td>
+                <td>Sara Chen</td>
+                <td>Specialist</td>
+                <td>Hydroponics &amp; Bio-Dome</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Answer Form -->
+        <form id="answer" class="terminal-card">
+          <label>
+            Clearance word:
+            <input name="w" autocomplete="off" required>
+          </label>
+          <div class="input-row">
+            <button class="term-btn">[AUTHENTICATE]</button>
+          </div>
+          <p class="msg"></p>
+        </form>
+
+        <!-- Next Level Link (hidden until solved) -->
+        <div id="next" class="next-banner" hidden>
+          <p style="font-size: 1.15rem; color: var(--text-bright); margin-top: 0;">
+            ✔ <strong>[CREDENTIALS VERIFIED]</strong> Command credentials authorized. Sector 3 Key: <code class="key-badge"></code>
+          </p>
+          <p style="color: var(--text-dim); margin-bottom: 0.5rem;">
+            Use this code to unlock Sector 4: The Deep-Space Star Map Observatory.
+          </p>
+          <a href="starmap.html">PROCEED TO SECTOR 4: STAR MAP OBSERVATORY →</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="terminal.js"></script>
+</body>
+</html>

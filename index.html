@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signal From Mars · Mission Log (Sector 1)</title>
+  <link rel="stylesheet" href="terminal.css">
+</head>
+<body data-page="1">
+  <div class="terminal-wrapper">
+    <!-- Top System Status Bar -->
+    <div class="sys-bar">
+      <div class="status-pill">
+        <span class="blink-dot"></span>
+        <span>ARES-4 STATION TELEMETRY // ORBITAL LINK ACTIVE</span>
+      </div>
+      <div>
+        <button id="audio-toggle" class="audio-toggle-btn">AUDIO: [ONLINE]</button>
+      </div>
+    </div>
+
+    <header>
+      <div class="terminal-badge">MISSION BRIEFING · SET 2: SIGNAL FROM MARS</div>
+      <h1>Subsurface Outpost Ares-4 · Mission Log</h1>
+      <p class="subtitle">Decryption Console · Sector 1 of 4 · Automated Recovery Protocol</p>
+    </header>
+
+    <main>
+      <!-- Story Card -->
+      <section class="terminal-card">
+        <h2 class="card-title">📡 Distress Signal Intercept</h2>
+        <p>At 04:12 Sol 214, the Ares-4 Martian Research Outpost abruptly cut all orbital carrier waves. You have tapped into the base's surviving auxiliary mission-control terminal.</p>
+        <blockquote class="log-entry">
+          "Main reactor offline. Habitat locks engaged. Broadcast the emergency authorization word across the sub-space beacon frequency so the rescue orbital probe can access our life support systems..."
+        </blockquote>
+        <p>Decode the emergency transmission below to unlock the primary access code for the station's life support systems.</p>
+      </section>
+
+      <!-- Mission Log Clue -->
+      <section class="terminal-card">
+        <h2 class="card-title">📻 Intercepted Black-Box Transmission</h2>
+        <p>The carrier wave was distorted by dust storms, but the pulse rhythm was logged into 6 sequential signal blocks:</p>
+        
+        <div class="morse-display">
+          <!-- Segmented pulse blocks for effortless reading -->
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-bottom: 1rem;">
+            <div style="background: #010c05; border: 1px solid var(--panel-border); padding: 0.5rem 0.8rem; border-radius: 3px; min-width: 80px;">
+              <div style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Letter 1</div>
+              <div style="font-size: 1.35rem; color: var(--text-bright); font-weight: bold; letter-spacing: 0.1em;">− · · ·</div>
+            </div>
+            <div style="background: #010c05; border: 1px solid var(--panel-border); padding: 0.5rem 0.8rem; border-radius: 3px; min-width: 80px;">
+              <div style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Letter 2</div>
+              <div style="font-size: 1.35rem; color: var(--text-bright); font-weight: bold; letter-spacing: 0.1em;">·</div>
+            </div>
+            <div style="background: #010c05; border: 1px solid var(--panel-border); padding: 0.5rem 0.8rem; border-radius: 3px; min-width: 80px;">
+              <div style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Letter 3</div>
+              <div style="font-size: 1.35rem; color: var(--text-bright); font-weight: bold; letter-spacing: 0.1em;">· −</div>
+            </div>
+            <div style="background: #010c05; border: 1px solid var(--panel-border); padding: 0.5rem 0.8rem; border-radius: 3px; min-width: 80px;">
+              <div style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Letter 4</div>
+              <div style="font-size: 1.35rem; color: var(--text-bright); font-weight: bold; letter-spacing: 0.1em;">− · − ·</div>
+            </div>
+            <div style="background: #010c05; border: 1px solid var(--panel-border); padding: 0.5rem 0.8rem; border-radius: 3px; min-width: 80px;">
+              <div style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Letter 5</div>
+              <div style="font-size: 1.35rem; color: var(--text-bright); font-weight: bold; letter-spacing: 0.1em;">− − −</div>
+            </div>
+            <div style="background: #010c05; border: 1px solid var(--panel-border); padding: 0.5rem 0.8rem; border-radius: 3px; min-width: 80px;">
+              <div style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Letter 6</div>
+              <div style="font-size: 1.35rem; color: var(--text-bright); font-weight: bold; letter-spacing: 0.1em;">− ·</div>
+            </div>
+          </div>
+
+          <button id="play-morse-btn" class="term-btn morse-play-btn">[ ▶ PLAY TRANSMISSION AUDIO BEACON ]</button>
+        </div>
+
+        <!-- On-Board Translation Chart (Visible at all times, no internet needed) -->
+        <div style="margin-top: 1.2rem; border: 1px solid var(--panel-border); background: rgba(0,255,102,0.04); padding: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--panel-border-dim); padding-bottom: 0.4rem; margin-bottom: 0.8rem;">
+            <strong style="color: var(--text-bright); font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase;">
+              📖 ON-BOARD SIGNAL DECODER CARD (OFFLINE REFERENCE)
+            </strong>
+            <span style="font-size: 0.75rem; color: var(--text-dim);">STANDARD A-Z MILITARY PULSE KEY</span>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 0.45rem; font-size: 0.85rem;">
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>A</strong>: · −</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>B</strong>: − · · ·</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>C</strong>: − · − ·</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>D</strong>: − · ·</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>E</strong>: ·</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>F</strong>: · · − ·</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>G</strong>: − − ·</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>H</strong>: · · · ·</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>I</strong>: · ·</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>J</strong>: · − − −</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>K</strong>: − · −</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>L</strong>: · − · ·</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>M</strong>: − −</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>N</strong>: − ·</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>O</strong>: − − −</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>P</strong>: · − − ·</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>Q</strong>: − − · −</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>R</strong>: · − ·</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>S</strong>: · · ·</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>T</strong>: −</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>U</strong>: · · −</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>V</strong>: · · · −</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>W</strong>: · − −</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>X</strong>: − · · −</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>Y</strong>: − · − −</div>
+            <div style="padding: 0.2rem 0.4rem; background: #010e05; border: 1px solid #005522;"><strong>Z</strong>: − − · ·</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Answer Form -->
+      <form id="answer" class="terminal-card">
+        <label>
+          Decrypted Station Beacon Word:
+          <input name="w" autocomplete="off" placeholder="ENTER WORD..." required>
+        </label>
+        <div class="input-row">
+          <button class="term-btn">[TRANSMIT AUTHORIZATION KEY]</button>
+        </div>
+        <p class="msg"></p>
+      </form>
+
+      <!-- Next Level Link (hidden until solved) -->
+      <div id="next" class="next-banner" hidden>
+        <p style="font-size: 1.15rem; color: var(--text-bright); margin-top: 0;">
+          ✔ <strong>[ACCESS GRANTED]</strong> Comm beacon online. Sector 1 Decryption Key logged: <code class="key-badge"></code>
+        </p>
+        <p style="color: var(--text-dim); margin-bottom: 0.5rem;">
+          To open Sector 2, you will need the password you just decoded.
+        </p>
+        <a href="oxygen.html">PROCEED TO SECTOR 2: OXYGEN DASHBOARD →</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="terminal.js"></script>
+</body>
+</html>

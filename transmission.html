@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signal From Mars · Final Transmission Relay</title>
+  <link rel="stylesheet" href="terminal.css">
+</head>
+<body data-page="5">
+  <div class="terminal-wrapper">
+    <!-- Top System Status Bar -->
+    <div class="sys-bar">
+      <div class="status-pill">
+        <span class="blink-dot"></span>
+        <span>ARES-4 STATION TELEMETRY // EMERGENCY RELAY CONSOLE</span>
+      </div>
+      <div>
+        <button id="audio-toggle" class="audio-toggle-btn">AUDIO: [ONLINE]</button>
+      </div>
+    </div>
+
+    <header>
+      <div class="terminal-badge">FINAL TRANSMISSION CONSOLE · SET 2</div>
+      <h1>Subsurface Transmission Buffer</h1>
+      <p class="subtitle">Decryption of Last Mars Outpost Signal · Earth Orbital Relay</p>
+    </header>
+
+    <main>
+      <!-- Story Card -->
+      <section class="terminal-card">
+        <h2 class="card-title">📡 Final Intercepted Audio Transmission</h2>
+        <p>With all four station sectors synchronized, the high-gain dish captured the colony's final emergency transmission buffer. The telemetry was recorded in reverse format to bypass orbital interception:</p>
+        
+        <div style="background: #020704; border: 1px solid var(--panel-border-dim); padding: 1rem; margin: 1rem 0; text-align: center;">
+          <p style="margin: 0 0 0.5rem; font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase;">
+            RAW REVERSED TRANSMISSION BUFFER:
+          </p>
+          <div id="reversed-buffer" style="font-size: 1.4rem; letter-spacing: 0.25em; color: var(--alert-amber); font-weight: bold;">
+            SOBOHP - SRAM - 2947 - NOCAEB
+          </div>
+          <button id="play-reverse-btn" class="term-btn" style="margin-top: 0.9rem;">
+            [ ⏪ PLAY REVERSED AUDIO DISPATCH ]
+          </button>
+        </div>
+
+        <blockquote class="log-entry">
+          "Four sectors, four access keys. Reversing the intercepted transmission sequence reveals the four passwords in chronological order."
+        </blockquote>
+      </section>
+
+      <!-- Four Dial Verification Form (Mirroring Set 1 lost-found.html) -->
+      <form id="final" class="terminal-card">
+        <h2 class="card-title">🔐 Multi-Sector Authorization Console</h2>
+        <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 0;">
+          Verify the four sector keys decoded from your expedition:
+        </p>
+        
+        <div class="dials-grid">
+          <div class="dial-box">
+            <label>Sector 1 (Comms):</label>
+            <input name="w1" autocomplete="off" placeholder="KEY 1..." required>
+          </div>
+          <div class="dial-box">
+            <label>Sector 2 (Oxygen):</label>
+            <input name="w2" autocomplete="off" placeholder="KEY 2..." required>
+          </div>
+          <div class="dial-box">
+            <label>Sector 3 (Roster):</label>
+            <input name="w3" autocomplete="off" placeholder="KEY 3..." required>
+          </div>
+          <div class="dial-box">
+            <label>Sector 4 (Star Map):</label>
+            <input name="w4" autocomplete="off" placeholder="KEY 4..." required>
+          </div>
+        </div>
+
+        <div>
+          <button class="term-btn">[AUTHENTICATE &amp; DECRYPT RELAY]</button>
+        </div>
+        <p class="msg"></p>
+      </form>
+
+      <!-- Found / Decrypted Victory Section -->
+      <section id="found" class="victory-card" hidden>
+        <h2 style="color: #ffffff; text-shadow: 0 0 15px var(--glow-color); margin-top: 0; font-size: 1.8rem;">
+          ✔ TRANSMISSION RESTORED · SIGNAL CLEAR
+        </h2>
+        
+        <p style="color: var(--text-bright); font-size: 1.05rem;">
+          The reversed carrier wave decodes cleanly:
+        </p>
+
+        <blockquote class="log-entry" style="text-align: left; margin: 1rem auto; max-width: 650px;">
+          "This is Commander Vance. Dust storm has passed. Life support and power have stabilized thanks to remote orbital override. Transmitting mission clearance for next operations team."
+        </blockquote>
+
+        <div style="border-top: 1px dashed var(--panel-border-dim); border-bottom: 1px dashed var(--panel-border-dim); padding: 1.2rem 0; margin: 1.5rem 0;">
+          <p style="text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-dim); margin: 0 0 0.5rem;">
+            ================ PASSCODE FOR NEXT SET (SET 3) ================
+          </p>
+          <div class="master-passcode-box">
+            BEACON-7492-MARS-PHOBOS
+          </div>
+          <div>
+            <button id="copy-passcode-btn" class="term-btn copy-btn">[ 📋 COPY SET 3 PASSCODE ]</button>
+          </div>
+        </div>
+
+        <p style="color: var(--text-dim); font-size: 0.95rem;">
+          Present this passcode to advance to <strong>Set 3</strong> of the web hunt.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script src="terminal.js"></script>
+</body>
+</html>
